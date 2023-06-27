@@ -1,9 +1,9 @@
 import React, {useMemo, useState} from 'react';
-import {Alert, StyleSheet, Text, View} from 'react-native';
+import {Alert, StyleSheet, View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import BackButton from '../components/common/BackButton';
 import DangerButton from '../components/common/DangerButton';
-import FullName from '../components/common/FullName';
+import DisplayName from '../components/common/DisplayName';
 import HeaderBar from '../components/common/HeaderBar';
 import NormalButton from '../components/common/NormalButton';
 import PhotoBig from '../components/common/PhotoBig';
@@ -11,6 +11,7 @@ import * as ContactActions from '../stores/actions/contact';
 import {Api} from '../services';
 import {Spacing, Typography} from '../components/styles';
 import Utils from '../utils';
+import ContactInfo from '../components/common/ContactInfo';
 
 export default function ContactDetailScreen({navigation, route}) {
   const dispatch = useDispatch();
@@ -81,15 +82,14 @@ export default function ContactDetailScreen({navigation, route}) {
         />
       </View>
       <View style={styles.contentContainer}>
-        <FullName
-          firstName={contactDetail.firstName}
-          lastName={contactDetail.lastName}
-        />
-        <Text key={'age'} style={styles.age}>
-          {`${contactDetail.age}`}
-        </Text>
+        <DisplayName firstName={contactDetail.firstName} />
       </View>
       <View style={styles.buttonContainer}>
+        <ContactInfo
+          firstName={contactDetail.firstName}
+          lastName={contactDetail.lastName}
+          age={contactDetail.age}
+        />
         <NormalButton
           disabled={isLoading === true}
           style={styles.button}
@@ -110,6 +110,7 @@ export default function ContactDetailScreen({navigation, route}) {
 const styles = StyleSheet.create({
   contentContainer: {
     marginVertical: Spacing.base,
+    alignItems: 'center',
   },
   photoButtonView: {
     marginBottom: Spacing.base,

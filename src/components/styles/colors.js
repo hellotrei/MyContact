@@ -6,3 +6,4 @@ export const darkGray = '#808080';
 export const darkestGray = '#636363';
 export const danger = '#CA0B00';
 export const white = '#ffffff';
+export const whiteBone = '#e5e3ec';

@@ -40,7 +40,6 @@ export function ageValidator(text) {
 }
 
 export function imageValidator(url) {
-  console.log('🚀 ~ file: validator.js:43 ~ imageValidator ~ url:', url);
   const imageRegex = /^https?:\/\/.*\.(?:png|jpg)(\?.*)?$/i;
   return imageRegex.test(url);
 }
